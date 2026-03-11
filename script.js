@@ -26,18 +26,18 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Show sticky header after scrolling past hero section
         if (scrollTop > heroBottom) {
-            stickyHeader.classList.add('show');
-            stickyHeader.classList.remove('hide');
-            
-            // Hide header when scrolling up
-            if (scrollTop < lastScrollTop) {
+            // Show header when scrolling down, hide when scrolling up
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down - show sticky header
                 stickyHeader.classList.add('show');
+                stickyHeader.classList.remove('hide');
             } else {
-                // Optional: Hide on scroll down
-                // stickyHeader.classList.remove('show');
-                // stickyHeader.classList.add('hide');
+                // Scrolling up - hide sticky header
+                stickyHeader.classList.remove('show');
+                stickyHeader.classList.add('hide');
             }
         } else {
+            // Above hero section - always hide
             stickyHeader.classList.remove('show');
             stickyHeader.classList.add('hide');
         }
